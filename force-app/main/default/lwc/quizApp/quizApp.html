@@ -1,0 +1,39 @@
+<template>
+    <lightning-card title="Quiz App">
+        <div class="slds-m-around_medium">
+            <template if:true={isSubmitted}>
+                You have scored {numOfCorrectAnswers}/{Questions.length}.
+            </template>
+            
+            <form>
+            <template for:each={Questions} for:item="quiz">
+                <div key={quiz.id}>
+                    <div><strong>{quiz.id}. {quiz.ques}?</strong></div>
+                    <div class="slds-grid slds-gutters  slds-m-bottom_medium">
+                        <div class="slds-col">
+                            <input type="radio" name={quiz.id} value="A" onchange={handler}>
+                          {quiz.answers.A}
+                        </div>
+                        <div class="slds-col">
+                            <input type="radio" name={quiz.id} value="B" onchange={handler}>
+                          {quiz.answers.B}
+                        </div>
+                        <div class="slds-col">
+                            <input type="radio" name={quiz.id} value="C" onchange={handler}>
+                          {quiz.answers.C}
+                        </div>
+                        <div class="slds-col">
+                            <input type="radio" name={quiz.id} value="D" onchange={handler}>
+                            {quiz.answers.D}
+                          </div>
+                      </div>
+                </div>
+            </template>
+            <lightning-button brand="variant" label="Submit" type="submit"
+            class="slds-m-around_small" onclick={submitHandler} disabled={allNotSelected}></lightning-button>
+            <lightning-button brand="variant" label="Reset" type="reset"
+            class="slds-m-around_small" onclick={resetHandler}></lightning-button>
+        </form>
+        </div>
+    </lightning-card>
+</template>

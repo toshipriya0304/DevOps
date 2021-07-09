@@ -1,0 +1,22 @@
+<template>
+    <div>
+        <lightning-card title="Quiz 2.0">
+            <template for:each={Questions} for:item="quiz">
+                <lightning-card key ={quiz.id}>
+                    <div><strong>{quiz.id} {quiz.ques}</strong></div>
+                    <input type="radio" name={quiz.id} value="A" onchange={handlerr}> {quiz.options.A} <br>
+                    <input type="radio" name={quiz.id} value="B" onchange={handlerr}> {quiz.options.B} <br>
+                    <input type="radio" name={quiz.id} value="C" onchange={handlerr}> {quiz.options.C} <br>
+                    <input type="radio" name={quiz.id} value="D" onchange={handlerr}> {quiz.options.D} <br><br>
+                    <lightning-button brand="variant" class="slds-m-around_small" 
+                        label="Check" onclick={handleSubmit}></lightning-button>
+                    <div>
+                        <template if:true={answered}>
+                            {result}
+                        </template>
+                    </div>
+                </lightning-card>
+            </template>
+        </lightning-card>
+    </div>
+</template>
